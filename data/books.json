@@ -1,0 +1,26 @@
+[
+  {
+    "barcode": 9786053114772,
+    "language": "Türkçe",
+    "price": 20.4,
+    "title": "Süt Lekesi",
+    "publisher": "Destek Yayınları",
+    "author": "Esra Ezmeci"
+  },
+  {
+    "barcode": 9786057906465,
+    "language": "Türkçe",
+    "price": 20.4,
+    "title": "Yanlış Hayat Doğru Yaşanmaz",
+    "publisher": "Olimpos Yayınları",
+    "author": "Ethem Emin Nemutlu"
+  },
+  {
+    "barcode": 9786051856322,
+    "language": "Türkçe",
+    "price": 27.3,
+    "title": "Hazan",
+    "publisher": "Everest Yayınları",
+    "author": "Ayşe Kulin"
+  }
+]

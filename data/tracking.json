@@ -1,0 +1,15 @@
+[
+    {
+        "loan_id": "L001",
+        "id": 27,
+        "member_name": "Naim Ucar",
+        "phone": "545-345-6786",
+        "address": "Baska Bir Sokak, Baska Bir Mahalle, Amsterdam, 35000",
+        "barcode": 9786057611000,
+        "book_title": "Kafamdaki Fillerin Hepsi Mavi",
+        "publisher": "Indigo Kitap",
+        "author": "Murat Güllen",
+        "registration_date": "2023-09-18-23:12:44",
+        "return_date": "2023-10-02"
+    }
+]
