@@ -9,7 +9,7 @@ def menu_header(menu_name, menu_width=30):
 def display_menu(title, options, width=50):
     menu_header(title, width)
     for option in options:
-        print('|' + option.center(width - 2) + '|')
+        print('|' + ' ' * 10 + option.ljust(width - 12) + '|')
     print('-' * width)
 
 def display_main_menu():
