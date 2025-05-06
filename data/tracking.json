@@ -1,7 +1,7 @@
 [
     {
         "loan_id": "L001",
-        "id": 27,
+        "member_id": 27,
         "member_name": "Naim Ucar",
         "phone": "545-345-6786",
         "address": "Baska Bir Sokak, Baska Bir Mahalle, Amsterdam, 35000",

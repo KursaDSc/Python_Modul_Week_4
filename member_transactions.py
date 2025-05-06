@@ -1,5 +1,4 @@
-import time_operations
-import book_operations
+import book_transactions
 import os
 import json
 
@@ -19,6 +18,10 @@ def get_all_members():
     """Retrieve list of all members"""
     pass
 
+def show_members():
+    """Show list of all members"""
+    pass
+
 def update_member(member_id, field, new_value):
     """Update member information"""
     pass
@@ -27,6 +30,12 @@ def member_exists(member_id):
     """Check if a member exists in the system"""
     pass
 
+
+def save_tracking():
+    """save updates to tracking.json file"""
+
+def get_tracking():
+    """load tracking data from tracking.json file"""
 
 def lend_book(member_id, book_barcode, loan_date, return_date):
     """Process book loan to a member"""
