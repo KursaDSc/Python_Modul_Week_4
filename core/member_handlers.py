@@ -1,7 +1,7 @@
 import member_transactions as mt
 from core.menu import menu_header
 from core.utils import show_message
-import time_utils as tu
+import core.time_utils as tu
 import member_transactions as mt
 
 def handle_show_members():
