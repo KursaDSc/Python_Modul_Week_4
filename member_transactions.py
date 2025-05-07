@@ -16,6 +16,7 @@ def save_members(members):
     with open("members.json", 'w', encoding='utf-8') as f:
         json.dump(members, f, indent=4, ensure_ascii=False)      
 
+<<<<<<< Updated upstream
 def add_member(name, phone, address):
     name = input("Üye adı: ")
     phone = input("Telefon numarası: ")
@@ -25,6 +26,30 @@ def add_member(name, phone, address):
     existing_ids = [m['member_id'] for m in members]
     next_id = max(existing_ids, default=0) + 1
 
+=======
+def load_members():
+    if not os.path.exists("members.json"):
+        return []
+    try:
+        with open("members.json", 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except:
+        return []
+    
+def save_members(members):
+    with open("members.json", 'w', encoding='utf-8') as f:
+        json.dump(members, f, indent=4, ensure_ascii=False)      
+
+def add_member(name, phone, address):
+    name = input("Üye adı: ")
+    phone = input("Telefon numarası: ")
+    address = input("Adres: ")
+    
+    members = load_members()
+    existing_ids = [m['member_id'] for m in members]
+    next_id = max(existing_ids, default=0) + 1
+
+>>>>>>> Stashed changes
     new_member = {
         "member_id": next_id,
         "name": name,
@@ -96,6 +121,36 @@ def update_member(member_id, field, new_value):
     print("2 - Telefon")
     print("3 - Adres")
     chois = input("Seçiminiz 1/2/3: ")
+<<<<<<< Updated upstream
+=======
+
+    field_map = {
+        "1": "name",
+        "2": "phone",
+        "3": "address"
+    }    
+
+    if chois not in field_map:
+        print("Geçersiz Seçim.")
+        return
+
+    field = field_map[chois]
+    new_value = input(f"Yeni {field}: ")
+
+    members = load_members()
+    for m in members():
+        if m[member_id] == member_id:
+            m[field] = new_value
+            save_members(members)
+            print(f"Üye {field} Bilgisi {new_value} olarak Güncellendi.") 
+            return
+    print("Üye Bulunamadı.")   
+
+def member_exists(member_id):       
+    
+    
+
+>>>>>>> Stashed changes
 
     field_map = {
         "1": "name",
