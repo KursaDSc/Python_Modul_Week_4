@@ -1,0 +1,27 @@
+#JSON Dosyasından Veri Okuma
+
+import json
+import os
+
+def read_json(filepath):
+    if not os.path.exists(filepath):
+        return {}
+    with open(filepath, 'r', encoding='utf-8') as f:
+        try:
+            return json.load(f)
+        except json.JSONDecodeError:
+            return {}
+
+#JSON Dosyasına Veri Yazma
+
+def write_json(filepath, data):
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+#İlk Veri Oluşturma veya Yedekleme(Opsiyonel)
+
+import shutil
+
+def backup_file(original_path, backup_path):
+    if os.path.exists(original_path):
+        shutil.copy(original_path, backup_path)
