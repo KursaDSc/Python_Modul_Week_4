@@ -3,8 +3,7 @@ import member_transactions
 import os
 import json
 
-
-def add_book(barcode, title, publisher, author):
+def add_book(barcode, title, publisher, author, status):
     """Add a new book to the library"""
     pass
 
