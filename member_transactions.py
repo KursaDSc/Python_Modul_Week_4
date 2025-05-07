@@ -200,5 +200,5 @@ def get_overdue_loans():
     pass
 
 def update_loan_status(loan_id, status):
-    """Update the status of a loan"""
+    """Update the status of a loans"""
     pass
