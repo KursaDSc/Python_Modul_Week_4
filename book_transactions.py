@@ -3,7 +3,6 @@ import json
 import core.data_io as di
 #kitaplarin kayitli oldugu dosya
 books_file = 'data/books.json'
-books = []
 
 
 def add_book(barcode, title , publisher, author, status):
@@ -15,11 +14,15 @@ def add_book(barcode, title , publisher, author, status):
         'author': author,
         'status': status
     })
+    di.write_json(books_file, books)
 
 def delete_book(barcode):
+    books = di.read_json(books_file)
     books = [book for book in books if book['barcode'] != barcode]
+    di.write_json(books_file, books)
 
 def search_book(search_term):
+    books = di.read_json(books_file)
     results = []
     for book in books:
         if (search_term.lower() in book['title'].lower() or
@@ -33,6 +36,7 @@ def get_all_books():
     return books
 
 def is_book_available(barcode):
+    books = di.read_json(books_file)
     for book in books:
         if book['barcode'] == barcode:
             return book['status'] == 'available'
