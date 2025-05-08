@@ -1,23 +1,36 @@
-import os
 import json
-import datetime
-import data_io
+import core.data_io as do 
 
 
-def save_tracking():
-    """save updates to tracking.json file"""
+# JSON dosyasını yükleme işlemi
+def load_tracking_data():
+    data= do.read_json('data/tracking.json')
+   
+# JSON dosyasına veri kaydetme işlemi
+def save_tracking_data(data):
+    do.write_json('data/tracking.json', data)
 
-def get_tracking():
-    """load tracking data from tracking.json file"""
+def add_record(record):
+    data = load_tracking_data()    
+    data.append(record)    
+    save_tracking_data(data)
 
-def get_loan_history(member_id=None):
-    """Retrieve loan history (all or for specific member)"""
-    pass
+def delete_record(barkod):
+    data= load_tracking_data()   # Mevcut verileri yukle
+    updated_data = [record for record in data if record['barcode'] != barkod]   # Barkodu eşleşmeyen kayıtları tutarak diğerini siliyrz
+    save_tracking_data(updated_data)  # Güncellenmiş veriyi kaydet
+    
+def track_loan(member_id):
+    data = load_tracking_data()  # JSON dosyasındaki ödünç kitap verilerini yükle
 
-def get_overdue_loans():
-    """Identify books that are overdue"""
-    pass
+    # Bu satır, member_id'si verilen kişinin hâlâ iade etmediği kitapları filtreler.
+    # Yani return_date alanı boş olan (geri verilmemiş) kitaplar
+    active_loans = [
+        record for record in data
+        if record['member_id'] == member_id and not record.get('return_date')
+    ]
 
-def update_loan_status(loan_id, status):
-    """Update the status of a loan"""
-    pass
+    return active_loans  # Bu fonksiyon, üyenin iade etmediği kitapları geri döner (liste olarak)
+
+
+
