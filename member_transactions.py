@@ -89,7 +89,7 @@ def lend_book(member_id, book_barcode):
         'loan_id': loan_id,
         'member_id': member_id,
         'book_barcode': book_barcode,
-        'registration_date': registiration_date.strftime("%Y-%m-%d"),
+        'registration_date': registration_date.strftime("%Y-%m-%d"),
         'return_date': return_date
     }
 
