@@ -1,13 +1,13 @@
 import os
 import json
-import core.data_io
+import core.data_io as di
 #kitaplarin kayitli oldugu dosya
 books_file = 'data/books.json'
 books = []
 
 
 def add_book(barcode, title , publisher, author, status):
-    books = data_io.read_json(books_file)
+    books = di.read_json(books_file)
     books.append({
         'barcode': barcode,
         'title': title,
@@ -29,7 +29,7 @@ def search_book(search_term):
     return results
 
 def get_all_books():
-    books = data_io.read_json(books_file)
+    books = di.read_json(books_file)
     return books
 
 def is_book_available(barcode):
