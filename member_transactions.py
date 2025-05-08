@@ -1,7 +1,7 @@
 import os
 import json
 import core.time_utils as tu
-import data_io
+import core.data_io
 
 def load_members():
     if not os.path.exists("members.json"):
