@@ -1,6 +1,6 @@
 import os
 import json
-import data_io
+import core.data_io
 
 def add_book(barcode, title, publisher, author, status):
     """Add a new book to the library"""
