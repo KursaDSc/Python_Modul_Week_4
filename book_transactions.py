@@ -1,27 +1,39 @@
 import os
 import json
 import core.data_io
+#kitaplarin kayitli oldugu dosya
+books_file = 'data/books.json'
+books = []
 
-def add_book(barcode, title, publisher, author, status):
-    """Add a new book to the library"""
-    pass
+
+def add_book(barcode, title , publisher, author, status):
+    books = data_io.read_json(books_file)
+    books.append({
+        'barcode': barcode,
+        'title': title,
+        'publisher': publisher,
+        'author': author,
+        'status': status
+    })
 
 def delete_book(barcode):
-    """Remove a book from the library"""
-    pass
+    books = [book for book in books if book['barcode'] != barcode]
 
 def search_book(search_term):
-    """Search books by various criteria"""
-    pass
+    results = []
+    for book in books:
+        if (search_term.lower() in book['title'].lower() or
+            search_term.lower() in book['author'].lower() or
+            search_term.lower() in book['publisher'].lower()):
+            results.append(book)
+    return results
 
 def get_all_books():
-    """Retrieve list of all available books"""
-    pass
-
-def update_book(barcode, field, new_value):
-    """Update book information"""
-    pass
+    books = data_io.read_json(books_file)
+    return books
 
 def is_book_available(barcode):
-    """Check if a book is available for loan"""
-    pass
+    for book in books:
+        if book['barcode'] == barcode:
+            return book['status'] == 'available'
+    return False
