@@ -14,12 +14,11 @@ def handle_show_members():
 
 def handle_add_member():
     menu_header("🆕 Yeni Üyelik")
-    member_id = input("Üye ID: ").strip()
     name = input("Ad Soyad: ").strip()
     phone = input("Telefon Numarası: ").strip()
     address = input("Adres: ").strip()
 
-    mt.add_member(member_id, name, phone, address)
+    mt.add_member(name, phone, address)
     show_message("\n✅ Üyelik başarıyla oluşturuldu.")
 
 

@@ -1,6 +1,8 @@
 import os
 import json
 import datetime
+import data_io
+
 
 def save_tracking():
     """save updates to tracking.json file"""
