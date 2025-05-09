@@ -1,12 +1,12 @@
 import book_transactions as bt
-from core.menu import menu_header
+from core.menu import menu_header, print_details
+import book_transactions as bt
 from core.utils import show_message
 
 def handle_show_books():
     menu_header("📚 Kütüphanedeki Kitaplar")
     books = bt.get_all_books()
-    for book in books:
-        print(f"- {book}")
+    print_details(books)
     input("\nDevam etmek için bir tuşa basın...")
 
 def handle_add_book():
@@ -29,8 +29,7 @@ def handle_search_book():
     
     if results:
         print("\n🔎 Arama Sonuçları:")
-        for book in results:
-            print(f"- {book}")
+        print_details(results)
     else:
         print("❌ Aradığınız kriterlere uygun kitap bulunamadı.")
     input("\nDevam etmek için bir tuşa basın...")

@@ -27,7 +27,7 @@ def track_loan(member_id):
     # Yani return_date alanı boş olan (geri verilmemiş) kitaplar
     active_loans = [
         record for record in data
-        if record['member_id'] == member_id and not record.get('return_date')
+        if record.get('member_id') == int(member_id)
     ]
 
     return active_loans  # Bu fonksiyon, üyenin iade etmediği kitapları geri döner (liste olarak)

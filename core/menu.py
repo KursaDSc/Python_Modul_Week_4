@@ -1,4 +1,5 @@
 from core.utils import *
+from tabulate import tabulate
 
 def menu_header(menu_name, menu_width=30):
     clear_screen()
@@ -44,3 +45,6 @@ def display_books_menu():
         "0 - ÇIKIŞ"
     ]
     display_menu("KİTAP İŞLEMLERİ (ENVANTER)", book_menu)        
+
+def print_details(data):
+    print(tabulate(data, headers="keys", tablefmt="fancy_grid"))
