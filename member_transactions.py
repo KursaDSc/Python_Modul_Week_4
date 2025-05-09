@@ -40,15 +40,7 @@ def search_member(search_term):
         or search_term in str(m['address']).lower()
         or str(search_term) == str(m['member_id'])
     ]
-    if result:
-        print("\n Arama Sonuçları: ")
-        for m in result:
-            print(f"ID: {m['member_id']}")
-            print(f"İSİM: {m['name']}")
-            print(f"Telefon: {m['phone']}")
-            print(f"adres: {m['address']}")
-        else:
-            print("Eşleşen üye bulunamadı.")
+    return result
 
 def get_all_members():
     return io.read_json('data/members.json')
@@ -104,7 +96,7 @@ def return_book(member_id, book_barcode):
     book = next((b for b in books if b['barcode'] == book_barcode), None)
     if book:
         book['status'] = "available"  
-        io.write_json("data/books.json", books)
+        io.write_json("data/books.json", book)
     
     tracking.remove(loan_record)
     io.write_json("data/tracking.json", tracking)
