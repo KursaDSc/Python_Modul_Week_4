@@ -48,7 +48,7 @@ def handle_loan_book():
     member_id = input("Üye ID: ").strip()
     barcode = input("Kitap Barkodu: ").strip()
 
-    success = mt.loan_book(member_id, barcode)
+    success = mt.lend_book(member_id, barcode)
     if success:
         print("\n✅ Kitap başarıyla ödünç verildi.")
     else:
