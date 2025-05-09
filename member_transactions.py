@@ -57,9 +57,11 @@ def lend_book(member_id, book_barcode):
 
     # Kitapları oku
     books = io.read_json("data/books.json")
-    
+
     # Kitap mevcut ve 'available' durumda mı kontrolü
-    book = next((b for b in books if b['barcode'] == str(book_barcode) and b['status'] == 'available'), None)
+    #book = next((b for b in books if b['barcode'] == book_barcode and b['status'] == 'available'), None)
+    book = next((b for b in books if b['barcode'] == int(book_barcode) and b['status'] == 'available'), None)
+
     if not book:
         print("Kitap mevcut değil ya da ödünç verilmiş.")
         return False
