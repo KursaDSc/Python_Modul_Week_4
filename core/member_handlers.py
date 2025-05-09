@@ -1,14 +1,15 @@
 import member_transactions as mt
-from core.menu import menu_header
+from core.menu import menu_header, print_details
 from core.utils import show_message
 import core.time_utils as tu
 import member_transactions as mt
+from tracking import track_loan
+
 
 def handle_show_members():
     menu_header("👥 Kayıtlı Üyeler")
     members = mt.get_all_members()
-    for member in members:
-        print(f"- {member}")
+    print_details(members)
     input("\nDevam etmek için bir tuşa basın...")
 
 
@@ -29,8 +30,7 @@ def handle_search_member():
     
     if results:
         print("\n🔎 Eşleşen Üyeler:")
-        for member in results:
-            print(f"- {member}")
+        print_details(results)
     else:
         print("❌ Üye bulunamadı.")
     input("\nDevam etmek için bir tuşa basın...")
@@ -72,12 +72,11 @@ def handle_return_book():
 def handle_book_tracking():
     menu_header("📊 Kitap Takibi")
     member_id = input("Üye ID: ").strip()
-    loans = mt.track_loans(member_id)
+    loans = track_loan(member_id)
 
     if loans:
         print("\n📚 Ödünç Alınan Kitaplar:")
-        for item in loans:
-            print(f"- {item}")
+        print_details(loans)
     else:
         print("ℹ️ Bu üyenin aktif ödünç aldığı kitap bulunmamaktadır.")
     input("\nDevam etmek için bir tuşa basın...")
