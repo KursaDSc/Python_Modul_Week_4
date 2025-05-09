@@ -25,7 +25,7 @@ def handle_add_member():
 
 def handle_search_member():
     menu_header("🔍 Üye Arama")
-    keyword = input("Aranacak isim, e-posta veya ID: ").strip()
+    keyword = input("Aranacak isim veya ID: ").strip()
     results = mt.search_member(keyword)
     
     if results:

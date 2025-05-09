@@ -36,8 +36,6 @@ def search_member(search_term):
     result = [
         m for m in members
         if search_term in str(m['name']).lower()
-        or search_term in str(m['phone']).lower()
-        or search_term in str(m['address']).lower()
         or str(search_term) == str(m['member_id'])
     ]
     return result
