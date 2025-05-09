@@ -26,7 +26,6 @@ def run_book_menu():
             break
         route_book_operation(choice)
 
-
 def main():
     while True:
         display_main_menu()
