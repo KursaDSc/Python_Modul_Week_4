@@ -4,12 +4,6 @@ import datetime
 import core.time_utils as tu
 import core.data_io as io
 
-def load_members():
-    return io.read_json('members.json')
-
-def save_members(member):
-    return io.write_json('members.json')
-
 def add_member(name, phone, address):
     members = io.read_json('members.json')
     existing_id = [m['member_id'] for m in members]
