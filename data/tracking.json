@@ -1,15 +1,16 @@
 [
     {
-        "loan_id": "L001",
+        "loan_id": "L002",
+        "member_id": 28,
+        "barcode": 9786051856322,
+        "registration_date": "2025-05-09",
+        "return_date": "2025-05-23"
+    },
+    {
+        "loan_id": "L003",
         "member_id": 27,
-        "member_name": "Naim Ucar",
-        "phone": "545-345-6786",
-        "address": "Baska Bir Sokak, Baska Bir Mahalle, Amsterdam, 35000",
-        "barcode": 9786057611000,
-        "book_title": "Kafamdaki Fillerin Hepsi Mavi",
-        "publisher": "Indigo Kitap",
-        "author": "Murat Güllen",
-        "registration_date": "2023-09-18",
-        "return_date": "2023-10-02"
+        "barcode": 9786053114772,
+        "registration_date": "2025-05-09",
+        "return_date": "2025-05-23"
     }
 ]
