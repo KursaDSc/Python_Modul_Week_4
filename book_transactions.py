@@ -1,6 +1,5 @@
-import os
-import json
 import core.data_io as di
+
 #kitaplarin kayitli oldugu dosya
 books_file = 'data/books.json'
 

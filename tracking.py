@@ -1,6 +1,4 @@
-import json
 import core.data_io as do 
-
 
 # JSON dosyasını yükleme işlemi
 def load_tracking_data():

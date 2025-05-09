@@ -1,7 +1,6 @@
 import member_transactions as mt
 from core.menu import menu_header, print_details
 from core.utils import show_message
-import core.time_utils as tu
 import member_transactions as mt
 from tracking import track_loan
 
