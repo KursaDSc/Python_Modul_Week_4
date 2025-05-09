@@ -4,8 +4,9 @@ import datetime
 import core.time_utils as tu
 import core.data_io as io
 
+
 def add_member(name, phone, address):
-    members = io.read_json('members.json')
+    members = io.read_json('data/members.json')
     existing_id = [m['member_id'] for m in members]
     next_id = max(existing_id, default=0) + 1
 
@@ -16,7 +17,7 @@ def add_member(name, phone, address):
         'address': address,
     }
     members.append(new_member)
-    io.write_json('members.json', members)
+    io.write_json('data/members.json', members)
     print(f"{new_member['name']} adlı üye başarıyla eklendi. (ID: {new_member['member_id']})")
 
 def delete_member(member_id):
@@ -24,13 +25,13 @@ def delete_member(member_id):
     member = next((m for m in members if m['member_id'] == member_id), None)
     if member:
         members.remove(member)
-        io.write_json('members.json', members)
+        io.write_json('data/members.json', members)
         print(f"{member['name']} adlı üye başarıyla silindi.")
     else:
         print("Üye Bulunamadı.")
 
 def search_member(search_term):
-    members = io.read_json('members.json')
+    members = io.read_json('data/members.json')
 
     result = [
         m for m in members
@@ -50,10 +51,10 @@ def search_member(search_term):
             print("Eşleşen üye bulunamadı.")
 
 def get_all_members():
-    return io.read_json('members.json')
+    return io.read_json('data/members.json')
 
 def member_exists(member_id):
-    members = io.read_json('members.json')
+    members = io.read_json('data/members.json')
     return any(m['member_id'] == member_id for m  in members)
 
 def lend_book(member_id, book_barcode):
@@ -61,13 +62,13 @@ def lend_book(member_id, book_barcode):
         print("Üye Bulunamadı.")
         return
     
-    books = io.read_json("books.json") 
+    books = io.read_json("data/books.json") 
     book = next((b for b in books if b['barcode'] == book_barcode and b['satus'] == 'available'), None)
     if not book:
         print("Kitap mevcut değil ya da ödünç verilmiş.")
         return
     
-    tracking = io.read_json("tracking.json") 
+    tracking = io.read_json("data/tracking.json") 
 
     loan_id = f"L{len(tracking) + 1:03d}"
     registration_date = datetime.datetime.now()
@@ -82,17 +83,17 @@ def lend_book(member_id, book_barcode):
     }
 
     tracking.append(loan_record)
-    io.write_json("tracking.json", tracking) 
+    io.write_json("data/tracking.json", tracking) 
 
     book["status"] = "borrowed"
-    io.write_json("books.json", books)
+    io.write_json("data/books.json", books)
 
     print(f"{book['title']} adlı kitap {loan_record['registration_date']} tarihinde ödünç verildi. "
           f"Teslim tarihi: {return_date}")
 
 def return_book(member_id, book_barcode):
-    tracking = io.read_json("tracking.json")
-    books = io.read_json("books.json")
+    tracking = io.read_json("data/tracking.json")
+    books = io.read_json("data/books.json")
 
     loan_record = next((l for l in tracking if l['member_id' == member_id and l['barcode'] == book_barcode]), None)
 
@@ -103,10 +104,10 @@ def return_book(member_id, book_barcode):
     book = next((b for b in books if b['barcode'] == book_barcode), None)
     if book:
         book['status'] = "available"  
-        io.write_json("books.json", books)
+        io.write_json("data/books.json", books)
     
     tracking.remove(loan_record)
-    io.write_json("tracking.json", tracking)
+    io.write_json("data/tracking.json", tracking)
     
     now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"{book['title']} adlı kitap {loan_record['registration_date']} tarihinde ödünç alındı. "
