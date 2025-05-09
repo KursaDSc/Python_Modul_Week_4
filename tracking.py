@@ -4,7 +4,7 @@ import core.data_io as do
 
 # JSON dosyasını yükleme işlemi
 def load_tracking_data():
-    data= do.read_json('data/tracking.json')
+    return do.read_json('data/tracking.json')
    
 # JSON dosyasına veri kaydetme işlemi
 def save_tracking_data(data):
