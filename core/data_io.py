@@ -1,4 +1,6 @@
 import json
+import os
+
 #Json dosayasini oku
 def read_json(filepath):
     if not os.path.exists(filepath):
@@ -17,34 +19,34 @@ def write_json(filepath, data):
 
 # JSON dosyasına veri ekle (liste yapısında ise)
 def append_to_json_file(filepath, new_data):
-    data = read_json_file(filepath)
+    data = read_json(filepath)
     if isinstance(data, list):
         data.append(new_data)
     else:
         data = [new_data]
-    write_json_file(filepath, data)
+    write_json(filepath, data)
 
 # Belirli bir öğeyi (kimlik,tbaslik, isim vs.) sil (liste içindeki sözlük)
 #chatgpt`den buldum
 def delete_from_json_file(filepath, key, value):
-    data = read_json_file(filepath)
+    data = read_json(filepath)
     if isinstance(data, list):
         data = [item for item in data if item.get(key) != value]
-        write_json_file(filepath, data)
+        write_json(filepath, data)
 
 # Belirli bir öğeyi güncelle (liste içindeki sözlük)
 def update_json_item(filepath, key, value, updated_item):
-    data = read_json_file(filepath)
+    data = read_json(filepath)
     if isinstance(data, list):
         for i, item in enumerate(data):
             if item.get(key) == value:
                 data[i] = updated_item
                 break
-        write_json_file(filepath, data)
+        write_json(filepath, data)
 
 # Belirli öğeyi bul (tek eşleşme bekleniyorsa)
 def find_in_json(filepath, key, value):
-    data = read_json_file(filepath)
+    data = read_json(filepath)
     if isinstance(data, list):
         for item in data:
             if item.get(key) == value:
@@ -53,7 +55,7 @@ def find_in_json(filepath, key, value):
 
 # Tüm eşleşmeleri döndür (filtreleme)
 def filter_json_items(filepath, key, value):
-    data = read_json_file(filepath)
+    data = read_json(filepath)
     if isinstance(data, list):
         return [item for item in data if item.get(key) == value]
     return []
