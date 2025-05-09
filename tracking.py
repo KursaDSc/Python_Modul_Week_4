@@ -30,7 +30,4 @@ def track_loan(member_id):
         if record['member_id'] == member_id and not record.get('return_date')
     ]
 
-    return active_loans  # Bu fonksiyon, üyenin iade etmediği kitapları geri döner (liste olarak)
-
-
-
+    return active_loans  # Bu fonksiyon, üyenin iade etmediği kitapları geri döner (liste olarak)
