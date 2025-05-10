@@ -1,15 +1,15 @@
 data/book.json
 data/kitap _backup.json
-# Byte-compiled / optimized / DLL files
-__pycache__/
-core/__pycache__/
+
+# Tüm pyc, pyo, pyd dosyalarını ignore et
 *.py[cod]
-*.pyo
-*.pyc
+
+# __pycache__ klasörlerini ignore et (her seviyede)
+__pycache__/
+**/__pycache__/
 
 # VS Code settings
 .vscode/
 
 # Mac system files
 .DS_Store
-*.pyc
