@@ -20,8 +20,8 @@ def add_member(name, phone, address):
     print(f"{new_member['name']} adlı üye başarıyla eklendi. (ID: {new_member['member_id']})")
 
 def delete_member(member_id):
-    members = io.read_json('members.json')
-    member = next((m for m in members if m['member_id'] == member_id), None)
+    members = io.read_json('data/members.json')
+    member = next((m for m in members if m['member_id'] == int(member_id)), None)
     if member:
         members.remove(member)
         io.write_json('data/members.json', members)
