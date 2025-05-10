@@ -3,7 +3,7 @@ data/kitap _backup.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*$py.class
+*.pyo
 
 # VS Code settings
 .vscode/
