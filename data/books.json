@@ -1,23 +1,30 @@
 [
-  {
-    "barcode": 9786053114772,
-    "title": "Süt Lekesi",
-    "publisher": "Destek Yayınları",
-    "author": "Esra Ezmeci",
-    "status": "available"
-  },
-  {
-    "barcode": 9786057906465,
-    "title": "Yanlış Hayat Doğru Yaşanmaz",
-    "publisher": "Olimpos Yayınları",
-    "author": "Ethem Emin Nemutlu",
-    "status": "available"
-  },
-  {
-    "barcode": 9786051856322,
-    "title": "Hazan",
-    "publisher": "Everest Yayınları",
-    "author": "Ayşe Kulin",
-    "status": "available"
-  }
+    {
+        "barcode": 9786053114772,
+        "title": "Süt Lekesi",
+        "publisher": "Destek Yayınları",
+        "author": "Esra Ezmeci",
+        "status": "borrowed"
+    },
+    {
+        "barcode": 9786057906465,
+        "title": "Yanlış Hayat Doğru Yaşanmaz",
+        "publisher": "Olimpos Yayınları",
+        "author": "Ethem Emin Nemutlu",
+        "status": "available"
+    },
+    {
+        "barcode": 9786051856322,
+        "title": "Hazan",
+        "publisher": "Everest Yayınları",
+        "author": "Ayşe Kulin",
+        "status": "borrowed"
+    },
+    {
+        "barcode": 9786057611000,
+        "title": "Kafamdaki Fillerin Hepsi Mavi",
+        "publisher": "Indigo Kitap",
+        "author": "Murat Güllen",
+        "status": "available"
+    }
 ]

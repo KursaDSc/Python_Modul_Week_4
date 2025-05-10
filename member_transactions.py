@@ -1,9 +1,6 @@
-import os
-import json
 import datetime
 import core.time_utils as tu
 import core.data_io as io
-
 
 def add_member(name, phone, address):
     members = io.read_json('data/members.json')
@@ -36,81 +33,79 @@ def search_member(search_term):
     result = [
         m for m in members
         if search_term in str(m['name']).lower()
-        or search_term in str(m['phone']).lower()
-        or search_term in str(m['address']).lower()
         or str(search_term) == str(m['member_id'])
     ]
-    if result:
-        print("\n Arama Sonuçları: ")
-        for m in result:
-            print(f"ID: {m['member_id']}")
-            print(f"İSİM: {m['name']}")
-            print(f"Telefon: {m['phone']}")
-            print(f"adres: {m['address']}")
-        else:
-            print("Eşleşen üye bulunamadı.")
+    return result
 
 def get_all_members():
     return io.read_json('data/members.json')
 
 def member_exists(member_id):
     members = io.read_json('data/members.json')
-    return any(m['member_id'] == member_id for m  in members)
+    return any(m['member_id'] == int(member_id) for m in members)  
 
 def lend_book(member_id, book_barcode):
     if not member_exists(member_id):
         print("Üye Bulunamadı.")
-        return
-    
-    books = io.read_json("data/books.json") 
-    book = next((b for b in books if b['barcode'] == book_barcode and b['satus'] == 'available'), None)
+        return False
+
+    books = io.read_json("data/books.json")
+
+    book = next((b for b in books if b['barcode'] == int(book_barcode) and b['status'] == 'available'), None)
+
     if not book:
         print("Kitap mevcut değil ya da ödünç verilmiş.")
-        return
+        return False
     
-    tracking = io.read_json("data/tracking.json") 
-
+    tracking = io.read_json("data/tracking.json")
+    
     loan_id = f"L{len(tracking) + 1:03d}"
     registration_date = datetime.datetime.now()
-    return_date = tu.calculate_due_date(registration_date).strftime("%Y-%m-%d") #burda diğer dosyadan veriyi doğru almıyor olabilir.
-
+    return_date = tu.calculate_due_date(registration_date).strftime("%Y-%m-%d")  # Teslim tarihi hesaplama
+    
     loan_record = {
         'loan_id': loan_id,
-        'member_id': member_id,
-        'book_barcode': book_barcode,
+        'member_id': int(member_id),
+        'barcode': int(book_barcode),
         'registration_date': registration_date.strftime("%Y-%m-%d"),
         'return_date': return_date
     }
-
+    
     tracking.append(loan_record)
-    io.write_json("data/tracking.json", tracking) 
+    io.write_json("data/tracking.json", tracking)
 
     book["status"] = "borrowed"
     io.write_json("data/books.json", books)
 
     print(f"{book['title']} adlı kitap {loan_record['registration_date']} tarihinde ödünç verildi. "
           f"Teslim tarihi: {return_date}")
+    return True
 
 def return_book(member_id, book_barcode):
     tracking = io.read_json("data/tracking.json")
     books = io.read_json("data/books.json")
-
-    loan_record = next((l for l in tracking if l['member_id' == member_id and l['barcode'] == book_barcode]), None)
-
+    
+    loan_record = next(
+        (l for l in tracking if int(l['member_id']) == int(member_id) and int(l['barcode']) == int(book_barcode)), 
+        None
+    )
+    
     if not loan_record:
         print("Bu kitap, bu üye tarafından ödünç alınmamış.")
-        return
+        return False
     
-    book = next((b for b in books if b['barcode'] == book_barcode), None)
+    book = next((b for b in books if b['barcode'] == int(book_barcode)), None)
+    
     if book:
-        book['status'] = "available"  
+        book['status'] = "available"
         io.write_json("data/books.json", books)
-    
+
     tracking.remove(loan_record)
     io.write_json("data/tracking.json", tracking)
-    
+
     now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"{book['title']} adlı kitap {loan_record['registration_date']} tarihinde ödünç alındı. "
-        f"{now_str} itibariyle iade alındı ve kitap 'available' durumuna getirildi.")
-
+          f"{now_str} itibariyle iade alındı ve kitap 'available' durumuna getirildi.")
+    
+    return True
     
