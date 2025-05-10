@@ -4,5 +4,11 @@
         "name": "Naime Ucan",
         "phone": "545-345-6786",
         "address": "Baska Bir Sokak, Baska Bir Mahalle, Amsterdam, 35000"
+    },
+    {
+        "member_id": 29,
+        "name": "ali",
+        "phone": "5557",
+        "address": "kjkhn"
     }
 ]

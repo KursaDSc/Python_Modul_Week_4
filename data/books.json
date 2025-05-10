@@ -4,7 +4,7 @@
         "title": "Süt Lekesi",
         "publisher": "Destek Yayınları",
         "author": "Esra Ezmeci",
-        "status": "available"
+        "status": "borrowed"
     },
     {
         "barcode": 9786057906465,
@@ -18,6 +18,13 @@
         "title": "Hazan",
         "publisher": "Everest Yayınları",
         "author": "Ayşe Kulin",
+        "status": "borrowed"
+    },
+    {
+        "barcode": 9786057611000,
+        "title": "Kafamdaki Fillerin Hepsi Mavi",
+        "publisher": "Indigo Kitap",
+        "author": "Murat Güllen",
         "status": "available"
     }
 ]
