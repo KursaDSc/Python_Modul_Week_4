@@ -1,2 +1,12 @@
 data/book.json
 data/kitap _backup.json
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VS Code settings
+.vscode/
+
+# Mac system files
+.DS_Store
