@@ -2,6 +2,7 @@ data/book.json
 data/kitap _backup.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
+core/__pycache__/
 *.py[cod]
 *.pyo
 
@@ -10,3 +11,4 @@ __pycache__/
 
 # Mac system files
 .DS_Store
+*.pyc
